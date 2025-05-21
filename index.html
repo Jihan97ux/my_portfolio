@@ -29,22 +29,10 @@
         }
 
         @media (max-width: 768px) {
-            .project-card.hovered {
-                transform: scale(1.05);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-                z-index: 10;
-            }
-
-            .project-card:active {
-                transform: none !important;
-                box-shadow: none !important;
-            }
-
             h1, h2, p {
                 text-align: center !important;
             }
         }
-
     </style>
 </head>
 <body class="w-full h-screen overflow-x-hidden">
@@ -203,37 +191,6 @@
             }
         });
     });
-</script>
-
-<script>
-    if (window.innerWidth <= 768) {
-        const cards = document.querySelectorAll('.project-card');
-        const hoverTimers = new Map();
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const el = entry.target;
-
-                if (entry.isIntersecting) {
-                    // Tambah hover dengan delay biar ga goyang
-                    const timer = setTimeout(() => {
-                        el.classList.add('hovered');
-                    }, 100); // delay biar ga detak
-
-                    hoverTimers.set(el, timer);
-                } else {
-                    clearTimeout(hoverTimers.get(el)); // stop delay jika keluar cepat
-                    el.classList.remove('hovered'); // hilangin efek
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: '-30% 0px -50% 0px',
-            threshold: 0.6
-        });
-
-        cards.forEach(card => observer.observe(card));
-    }
 </script>
 
 </body>
