@@ -205,7 +205,8 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('hovered');
-                    observer.unobserve(entry.target); // stop after one-time
+                } else {
+                    entry.target.classList.remove('hovered');
                 }
             });
         }, {
