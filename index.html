@@ -20,11 +20,9 @@
         .project-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .project-card.hovered,
-        .project-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        .project-card.hovered {
+            transform: none !important;
+            box-shadow: none !important;
         }
 
         @media (max-width: 768px) {
@@ -199,8 +197,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('hovered');
-                } else {
-                    entry.target.classList.remove('hovered');
+                    observer.unobserve(entry.target); // stop after first trigger
                 }
             });
         }, {
