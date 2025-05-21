@@ -18,13 +18,14 @@
         }
 
         .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-card.hovered {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-        }
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .project-card.hovered,
+            .project-card:hover {
+                transform: scale(1.03);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            }
 
         @media (max-width: 768px) {
             h1, h2, p {
