@@ -20,12 +20,20 @@
         .project-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .project-card.hovered {
-            transform: none !important;
-            box-shadow: none !important;
+
+        @media (min-width: 769px) {
+            .project-card.hovered {
+                transform: none !important;
+                box-shadow: none !important;
+            }
         }
 
         @media (max-width: 768px) {
+            .project-card.hovered {
+                transform: scale(1.05);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                z-index: 10;
+            }
             h1, h2, p {
                 text-align: center !important;
             }
@@ -197,7 +205,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('hovered');
-                    observer.unobserve(entry.target); // stop after first trigger
+                    observer.unobserve(entry.target); // stop after one-time
                 }
             });
         }, {
